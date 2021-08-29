@@ -6,7 +6,7 @@
 
 {% block content %}
   <h2>Complete registration</h2>
-  <form action = "{% url 'customers:create' %}" method="post">
+  <form action = "{% url 'customers:create' %}" method="POST">
     {% csrf_token %}
       Name : <input type = 'text' name ='name' id="name"><br />
       Address : <input type = 'text' name ='address' id="address"><br />
