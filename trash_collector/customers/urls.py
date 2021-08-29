@@ -11,3 +11,4 @@ urlpatterns = [
     path('new/',views.create, name = 'create'),
     path('update_pickup/<int:user_id>/', views.update_pickup, name = 'update_pickup'),
 ]
+
