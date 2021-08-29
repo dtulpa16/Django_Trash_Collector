@@ -9,4 +9,5 @@ app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
+    path('update_pickup/<int:user_id>/', views.update_pickup, name = 'update_pickup'),
 ]

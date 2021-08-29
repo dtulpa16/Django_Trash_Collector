@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Pickup </title>
+</head>
+<body>
+    <form action="{% url 'customers:update_pickup' new_pickup.id %}" method="post">
+        <label for="weekly_pickup">Choose a day of week:</label>
+        <select name="weekly_pickup" id="weekly_pickup">
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thurday">Thurday</option>
+          <option value="Friday">Friday</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Update">
+      </form>      
+</body>
+</html>

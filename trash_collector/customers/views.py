@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from .models import Customer
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
@@ -32,8 +32,21 @@ def create(request):
             address = request.POST.get('address')
             zip_code = request.POST.get('zip_code')
             weekly_pickup = request.POST.get('weekly_pickup')
-            new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup)
+            new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup, user = request.user)
             new_user.save()
             return render(request, 'customers/index.html')
         else:
             return render(request, 'customers/create.html')
+
+def update_pickup(request,user_id):
+    new_pickup = Customer.objects.get(pk = user_id)
+    if request.method == 'post':
+        new_pickup.weekly_pickup = request.POST.get('weekly_pickup')
+        new_pickup.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            'new_pickup': new_pickup
+        }
+        return render(request, 'customers/update_pickup.html', context)
+        #line 42 needs adjustment
