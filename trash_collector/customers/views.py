@@ -53,3 +53,16 @@ def update_pickup(request):
         }
         return render(request, 'customers/update_pickup.html', context)
         #line 42 needs adjustment
+
+def one_time_pickup(request):
+    user = request.user
+    logged_in_customer = Customer.objects.get(user=user)
+    if request.method == 'POST':
+        logged_in_customer.one_time_pickup = request.POST.get('one_time_pickup')
+        logged_in_customer.save()
+        return render(request, 'customers/index.html')
+    else:
+        context = {
+            'logged_in_customer': logged_in_customer
+        }
+        return render(request, 'customers/one_time_pickup.html', context)
