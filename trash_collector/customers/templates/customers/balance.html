@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Balance {%blockend%} 
+
+{% block header %} Account Balance {% endblock %} 
+
+{% block body %}
+    <form action="{% url 'customers:account_balance'%}" method="GET">
+        {% csrf_token %}
+          <label for="account_balance">Account Balance:</label>
+          
+        </form>    
+{% endblock body %}

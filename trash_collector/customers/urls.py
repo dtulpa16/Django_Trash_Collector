@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
     path('update_pickup/', views.update_pickup, name = 'update_pickup'),
-    path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup')
+    path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup'),
+    path('balance/', views.account_balance, name= 'accound_balance')
 ]
 

@@ -82,3 +82,13 @@ def suspend_pickup (request):
                 'logged_in_customer' : logged_in_customer
             }
             return render (request, 'customer/suspend_pickup.html', context)
+
+
+def account_balance (request):
+    user = request.user
+    logged_in_customer = Customer.objects.get (user=user)
+    acc_balance = logged_in_customer.balance 
+    context = {
+        'acc_balance' : acc_balance
+    }
+    return render (request, 'customer/account_balance.html', context)

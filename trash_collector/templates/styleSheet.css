@@ -1,0 +1,34 @@
+body{
+    background-color: rgba(90, 90, 90, 0.952);
+}
+
+#navbar a{
+    padding: 4%;
+}
+
+#navbar {
+    position: sticky;
+    font-size: larger;
+    font-weight: bolder;
+    font-optical-sizing: 100;
+    height: 50%;
+    background-color:rgba(47, 112, 82, 0.507);
+    color: rgb(5, 5, 5);
+    text-align: center
+}
+
+::content {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(37, 37, 36);
+    border-style: hidden;
+    background-clip: padding-box;
+    margin: 20px;
+    padding: 20px;
+    position: center;
+    color: beige;
+}
+
+#navbar a:active{
+    color:rgb(5, 5, 5);
+}
+
