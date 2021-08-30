@@ -7,7 +7,7 @@
     <title>Suspend Pickup</title>
 </head>
 <body>
-    <form action="{% url 'customers:update_pickup'%}" method="POST">
+    <form action="{% url 'customers:suspend_pickup'%}" method="POST">
         {% csrf_token %}
           <label for="suspend_pickup">Choose Suspension Start Date:</label>
           <input type= "date" id= 'suspend_start' name= 'suspend_start'>
