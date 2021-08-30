@@ -11,7 +11,8 @@
   {% if user.is_authenticated %}
     Hello Customer {{ user.username }}!
     <h3><a href= "{% url 'customers:update_pickup'%}">Change pickup date</a></h3>
-    <h4><a href= "{% url 'customers:one_time_pickup'%}">Change pickup date</a></h4>
+    <h4><a href= "{% url 'customers:one_time_pickup'%}">Add one time pickup date</a></h4>
+    <h4><a href= "{% url 'customers:suspend_pickup'%}">Suspend account</a></h4>
   {% else %}
     <p>You are at the customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

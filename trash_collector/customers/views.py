@@ -81,7 +81,9 @@ def suspend_pickup (request):
             context = {
                 'logged_in_customer' : logged_in_customer
             }
-            return render (request, 'customer/suspend_pickup.html', context)
+
+            return render (request, 'customers/suspend_pickup.html', context)
+
 
 
 def account_balance (request):
@@ -92,3 +94,4 @@ def account_balance (request):
         'acc_balance' : acc_balance
     }
     return render (request, 'customer/account_balance.html', context)
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
+
+{% block content %}
+<form action = "{% url 'employees:todays_pickups'%}">
+{% for customer in customers %}
+    <table width = 30%>
+        <tr>
+            <td style="width: 25%"><li><h2>{{customer.name}}</td></li></h2>
+        </tr>    
+    </table>
+{% endfor %}
+</form>
+{% endblock %}
