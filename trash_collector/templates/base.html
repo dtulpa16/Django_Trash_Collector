@@ -6,18 +6,37 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-  {% for group in user.groups.all%}
+  
+{% for group in user.groups.all%}
     {% if group.name == "Customers" %}
-    <p>Customer Navbar</p>
+    <div id="navbar">
+      <nav>
+        <a href="{  %url 'customers:index'%}">Home</a>
+        <a href="{ %url 'customers:update_pickup'%}"> Update Pickup </a>
+        <a href="{ %url 'customers:one_time_pickup'%}"> Schedule One Time Pickup</a>
+        <a href="{ %url 'customers:suspend_pikcup'%}"> Suspend Services</a> 
+      </nav> 
+    </div>   
+    
     {% elif group.name == "Employees" %}
-    <p>Employee Navbar</p>
+    <div id="navbar">
+      <nav>
+        <a href="{%url 'employees:index'%}">Home</a>
+        <a href="{ %url ''%}"> Update Pickup </a>
+        <a href="{ %url ''%}"> Schedule One Time Pickup</a>
+        <a href="{ %url ''%}"> Suspend Services</a> 
+      </nav> 
+    </div> 
     {% endif %}
+
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% endif %}
   <main>
     <h1>{% block header %} {% endblock %}</h1>
+    
     {% block content %}
+    
     {% endblock %}
   </main>
 </body>

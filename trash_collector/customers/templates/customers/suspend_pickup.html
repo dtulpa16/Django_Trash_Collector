@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,20 @@
 </head>
 <body>
     <form action="{% url 'customers:suspend_pickup'%}" method="POST">
+=======
+{% extends 'base.html' %}
+
+{% block title %} Suspend Pickup {% endblock %}
+
+{% block header %} Suspend Pickup Services {% endblock %}
+
+{% block body %}
+    <form action="{% url 'customers:update_pickup'%}" method="POST">
+>>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
         {% csrf_token %}
           <label for="suspend_pickup">Choose Suspension Start Date:</label>
           <input type= "date" id= 'suspend_start' name= 'suspend_start'>
           <input type= 'date' id= 'suspend_end' name= 'suspend_end'>
           <input type="submit" value="Update">
         </form>    
-</body>
-</html>
+{% endblock body %}

@@ -5,6 +5,8 @@
 
 {% block header %} Customer Home {% endblock %}
 
+{%block navbar}{% endblock %}
+
 {% block content %}
   {% if user.is_authenticated %}
     Hello Customer {{ user.username }}!

@@ -54,7 +54,10 @@ def update_pickup(request):
         return render(request, 'customers/update_pickup.html', context)
         #line 42 needs adjustment
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
 def one_time_pickup(request):
     user = request.user
     logged_in_customer = Customer.objects.get(user=user)
@@ -67,7 +70,10 @@ def one_time_pickup(request):
             'logged_in_customer': logged_in_customer
         }
         return render(request, 'customers/one_time_pickup.html', context)
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
 
 def suspend_pickup (request):
         user = request.user
@@ -83,5 +89,9 @@ def suspend_pickup (request):
             context = {
                 'logged_in_customer' : logged_in_customer
             }
+<<<<<<< HEAD
             return render (request, 'customers/suspend_pickup.html', context)
 
+=======
+            return render (request, 'customer/suspend_pickup.html', context)
+>>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
