@@ -54,10 +54,6 @@ def update_pickup(request):
         return render(request, 'customers/update_pickup.html', context)
         #line 42 needs adjustment
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a6237f651f1e03bacd1910b11a0e3387e0ce612a
 def one_time_pickup(request):
     user = request.user
     logged_in_customer = Customer.objects.get(user=user)
@@ -89,8 +85,6 @@ def suspend_pickup (request):
             return render (request, 'customers/suspend_pickup.html', context)
 
 
-<<<<<<< HEAD
-=======
 
 def account_balance (request):
     user = request.user
@@ -101,4 +95,3 @@ def account_balance (request):
     }
     return render (request, 'customer/account_balance.html', context)
 
->>>>>>> a6237f651f1e03bacd1910b11a0e3387e0ce612a

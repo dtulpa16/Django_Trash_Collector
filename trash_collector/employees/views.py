@@ -24,20 +24,24 @@ def index(request):
     except:
         return HttpResponseRedirect(reverse('employees:create'))
     # return render(request, 'employees/index.html')
-
+    print(user)
+    return render(request, 'customers/index.html')
+    #TODO finish todays pickup and find out why is redirecting to empty employee home page. also, figure out why emplyees are being directed to the customer page
 def todays_pickups(request):
     user = request.user
     logged_in_employee = Employee.objects.get(user=user)
     Customer = apps.get_model('customers.Customer')
     today = date.today()
     string_weekday = calendar.day_name[today.weekday()]
-    customers = Customer.objects.filter(one_time_pickup=today, weekly_pickup = string_weekday)
+    customers = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
+    customer = []
     for pick_ups in customers:
-        if pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == calendar.day_name[today.weekday()] and logged_in_employee.zip_code == pick_ups.zip_code:
-            context = {
-                'customers' : customers
-                }
-            return render(request, 'employees/todays_pickups.html', context)
+        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code:
+            customer.append(pick_ups)
+    context = {
+        'customer' : customer
+        }
+    return render(request, 'employees/todays_pickups.html', context)
 
 def create(request):
         if request.method == 'POST':
