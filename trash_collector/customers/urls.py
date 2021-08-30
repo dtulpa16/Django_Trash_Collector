@@ -11,6 +11,18 @@ urlpatterns = [
     path('new/',views.create, name = 'create'),
     path('one_time_pickup/',views.one_time_pickup, name = 'one_time_pickup'),
     path('update_pickup/', views.update_pickup, name = 'update_pickup'),
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup'),
+    path('balance/', views.account_balance, name= 'accound_balance')
+=======
+<<<<<<< HEAD
+    path('one_time_pickup/', views.one_time_pickup, name = 'one_time_pickup'),
+=======
+>>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
+>>>>>>> a6237f651f1e03bacd1910b11a0e3387e0ce612a
     path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup')
+>>>>>>> 1d7dbb1787081f45f89a3aef60119e0f891c1c1a
 ]
 
