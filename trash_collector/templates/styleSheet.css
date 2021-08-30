@@ -17,14 +17,14 @@ body{
     text-align: center
 }
 
-::content {
+content {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: rgb(37, 37, 36);
     border-style: hidden;
     background-clip: padding-box;
     margin: 20px;
     padding: 20px;
-    position: center;
+    align-content: center;
     color: beige;
 }
 
