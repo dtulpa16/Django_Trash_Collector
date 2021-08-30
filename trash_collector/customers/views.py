@@ -38,15 +38,18 @@ def create(request):
         else:
             return render(request, 'customers/create.html')
 
-def update_pickup(request,user_id):
-    new_pickup = Customer.objects.get(pk = user_id)
-    if request.method == 'post':
-        new_pickup.weekly_pickup = request.POST.get('weekly_pickup')
-        new_pickup.save()
-        return HttpResponseRedirect(reverse('customers:index'))
+def update_pickup(request):
+    user = request.user
+    logged_in_customer = Customer.objects.get(user=user)
+    if request.method == 'POST':
+        logged_in_customer.weekly_pickup = request.POST.get('weekly_pickup')
+        # new_pickup = Customer(weekly_pickup = new_pickup.weekly_pickup)
+        logged_in_customer.save()
+        
+        return render(request, 'customers/index.html')
     else:
         context = {
-            'new_pickup': new_pickup
+            'logged_in_customer': logged_in_customer
         }
         return render(request, 'customers/update_pickup.html', context)
         #line 42 needs adjustment

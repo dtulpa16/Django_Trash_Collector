@@ -7,7 +7,8 @@
     <title>Update Pickup </title>
 </head>
 <body>
-    <form action="{% url 'customers:update_pickup' new_pickup.id %}" method="post">
+    <form action="{% url 'customers:update_pickup'%}" method="POST">
+      {% csrf_token %}
         <label for="weekly_pickup">Choose a day of week:</label>
         <select name="weekly_pickup" id="weekly_pickup">
           <option value="Monday">Monday</option>
