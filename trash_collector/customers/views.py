@@ -54,7 +54,6 @@ def update_pickup(request):
         return render(request, 'customers/update_pickup.html', context)
         #line 42 needs adjustment
 
-<<<<<<< HEAD
 def one_time_pickup(request):
     user = request.user
     logged_in_customer = Customer.objects.get(user=user)
@@ -67,7 +66,6 @@ def one_time_pickup(request):
             'logged_in_customer': logged_in_customer
         }
         return render(request, 'customers/one_time_pickup.html', context)
-=======
 
 def suspend_pickup (request):
         user = request.user
@@ -84,4 +82,3 @@ def suspend_pickup (request):
                 'logged_in_customer' : logged_in_customer
             }
             return render (request, 'customer/suspend_pickup.html', context)
->>>>>>> c369f4bf5e2f8a1869ec91874a7649494c176804
