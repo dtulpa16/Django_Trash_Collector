@@ -1,10 +1,14 @@
 # from trash_collector.customers.models import Customer
 from . import models
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render
 from django.apps import apps
+from datetime import datetime
 from datetime import date
 from .models import Employee
+import calendar
+
 
 # Create your views here.
 
@@ -14,17 +18,39 @@ from .models import Employee
 def index(request):
     # This line will get the Customer model from the other app, it can now be used to query the db for Customers
     Customer = apps.get_model('customers.Customer')
-    return render(request, 'employees/index.html')
-
+    user = request.user
+    try:
+        logged_in_employee = Employee.objects.get(user=user)
+    except:
+        return HttpResponseRedirect(reverse('employees:create'))
+    # return render(request, 'employees/index.html')
+    print(user)
+    return render(request, 'customers/index.html')
+    #TODO finish todays pickup and find out why is redirecting to empty employee home page. also, figure out why emplyees are being directed to the customer page
 def todays_pickups(request):
+    user = request.user
+    logged_in_employee = Employee.objects.get(user=user)
     Customer = apps.get_model('customers.Customer')
     today = date.today()
-    customers = Customer.objects.filter(one_time_pickup=today)
+    string_weekday = calendar.day_name[today.weekday()]
+    customers = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
+    customer = []
     for pick_ups in customers:
-        if pick_ups.one_time_pickup == today:
-            context = {
-                'customers' : customers
-                }
-            return render(request, 'employees/todays_pickups.html', context)
+        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code:
+            customer.append(pick_ups)
+    context = {
+        'customer' : customer
+        }
+    return render(request, 'employees/todays_pickups.html', context)
+
+def create(request):
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            zip_code = request.POST.get('zip_code')
+            new_user = Employee(zip_code = zip_code, name = name, user = request.user)
+            new_user.save()
+            return render(request, 'employees/index.html')
+        else:
+            return render(request, 'employees/create.html')
 
 

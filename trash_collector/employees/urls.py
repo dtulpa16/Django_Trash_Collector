@@ -10,5 +10,6 @@ from . import views
 app_name = "employees"
 urlpatterns = [
     path('', views.index, name="index"),
+    path('new/',views.create, name = 'create'),
     path('todays_pickups/', views.todays_pickups, name = 'todays_pickups')
 ]

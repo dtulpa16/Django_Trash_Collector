@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Acount {% endblock %}
+
+{% block header %} Create Account {% endblock %}
+
+
+{% block content %}
+  <h2>Complete registration</h2>
+  <form action = "{% url 'employees:create' %}" method="POST">
+    {% csrf_token %}
+    Name : <input type = 'text' name ='name' id="name"><br />
+    Zip code to pickup in : <input type = 'number' name ='zip_code' id="zip_code"><br />
+    <button type="submit">Complete Registration</button>
+  </form>
+{% endblock %}
