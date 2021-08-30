@@ -9,11 +9,8 @@ app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
+    path('one_time_pickup/',views.one_time_pickup, name = 'one_time_pickup'),
     path('update_pickup/', views.update_pickup, name = 'update_pickup'),
-<<<<<<< HEAD
-    path('one_time_pickup/', views.one_time_pickup, name = 'one_time_pickup'),
-=======
->>>>>>> ef529b13f98681e5f9bda4d1110b4edd9a904dee
     path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup')
 ]
 
