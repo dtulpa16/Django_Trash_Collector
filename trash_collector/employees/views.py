@@ -38,7 +38,7 @@ def todays_pickups(request):
     customers = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
     customer = []
     for pick_ups in customers:
-        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code and pick_ups.suspend_start > today and  today >= pick_ups.suspend_end :
+        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code and (pick_ups.suspend_start < today and  today >= pick_ups.suspend_end or pick_ups.suspend_start > today and  today <= pick_ups.suspend_end) and pick_ups.suspend_start != '2000-01-01':
             customer.append(pick_ups)
     context = {
         'customer' : customer
@@ -55,4 +55,16 @@ def create(request):
         else:
             return render(request, 'employees/create.html')
 
+def filter(request, day):
+    user = request.user
+    logged_in_employee = Employee.objects.get(user=user)
+    Customer = apps.get_model('customers.Customer')
+    customers = Customer.objects.filter(weekly_pickup = day)
+    customer = []
+    for filter_day in customers:
+        customer.append(filter_day)
+    context = {
+        'customer' : customer
+    }
+    return render(request, 'employees/filter/day.html', context)
 
