@@ -33,7 +33,7 @@ def create(request):
             address = request.POST.get('address')
             zip_code = request.POST.get('zip_code')
             weekly_pickup = request.POST.get('weekly_pickup')
-            new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup, user = request.user, suspend_start = '2000-01-01', suspend_end = '2000-01-02')
+            new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup, user = request.user,balance=0, suspend_start = '2000-01-01', suspend_end = '2000-01-02')
             new_user.save()
             return render(request, 'customers/index.html')
         else:

@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}{% block header %} Todays Pickups {% endblock %}{% endblock %}
+{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
 
 {% block content %}
 <form action = "{% url 'employees:todays_pickups'%}">
 {% for customer in customer %}
-        <li><h2>Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</li></h2>
+        <li><h3>{{customer.name}} - {{customer.address}}
+                <form action= "{% url 'employees:' %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-large btn-primary" data-toggle="confirmation"
+                        data-btn-ok-label="Continue" data-btn-ok-class="btn-success"
+                        data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
+                        data-btn-cancel-label="Stoooop!" data-btn-cancel-class="btn-danger"
+                        data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                        data-title="Is it ok?" data-content="Customer will be billed once you confirm pickup. Continue?">
+                  Confirm Pick-up
+                </button>
+                </form>
+        </li></h3>
 {% endfor %}
 </form>
 {% endblock %}
+
+

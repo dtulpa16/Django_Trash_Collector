@@ -55,7 +55,20 @@ def create(request):
         else:
             return render(request, 'employees/create.html')
 
+<<<<<<< HEAD
 def filter(request, day_of_week):
+=======
+
+# def confirm_pickup (request):
+#     pass
+#     charged = False
+#     if charged == True:
+#         charge_customer(request)
+#     else charged == False
+
+   
+def filter(request, day):
+>>>>>>> 3654a725cb98774537fea287b7fd11321d9ec7de
     user = request.user
     logged_in_employee = Employee.objects.get(user=user)
     Customer = apps.get_model('customers.Customer')
@@ -68,3 +81,18 @@ def filter(request, day_of_week):
     }
     return render(request, 'employees/filter.html', context)
 
+def charge_customer (request):
+    Customer = apps.get_model('customers.Customer')
+    if request.method == 'POST':
+        
+        customers = Customer.POST.get('balance')
+        customers += 5
+    
+    context = {
+        'customers' : customers
+    }
+    return render(request, "employees/todays_pickups.html", context)
+
+
+
+  
