@@ -13,4 +13,5 @@ urlpatterns = [
     path('new/',views.create, name = 'create'),
     path('todays_pickups/', views.todays_pickups, name = 'todays_pickups'),
     path('filter/<str:day>/', views.filter, name = 'filter'),
+    path('', views.charge_customer, name= 'charge_customer')
 ]

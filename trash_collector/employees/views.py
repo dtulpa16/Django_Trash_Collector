@@ -55,14 +55,6 @@ def create(request):
         else:
             return render(request, 'employees/create.html')
 
-
-# def confirm_pickup (request):
-#     pass
-#     charged = False
-#     if charged == True:
-#         charge_customer(request)
-#     else charged == False
-
    
 def filter(request, day):
     user = request.user
@@ -79,15 +71,11 @@ def filter(request, day):
 
 def charge_customer (request):
     Customer = apps.get_model('customers.Customer')
-    if request.method == 'POST':
-        
-        customers = Customer.POST.get('balance')
-        customers += 5
-    
-    context = {
-        'customers' : customers
-    }
-    return render(request, "employees/todays_pickups.html", context)
+    # if request.method == 'POST':
+    customers = Customer.POST.get('balance')
+    balance= customers + 5
+    balance.save()
+    return render(request, "employees/todays_pickups.html")
 
 
 
