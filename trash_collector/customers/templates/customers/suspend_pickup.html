@@ -4,7 +4,7 @@
 
 {% block header %} Suspend Pickup Services {% endblock %}
 
-{% block body %}
+{% block content %}
     <form action="{% url 'customers:update_pickup'%}" method="POST">
         {% csrf_token %}
           <label for="suspend_pickup">Choose Suspension Start Date:</label>
@@ -12,4 +12,4 @@
           <input type= 'date' id= 'suspend_end' name= 'suspend_end'>
           <input type="submit" value="Update">
         </form>    
-{% endblock body %}
+{% endblock content %}
