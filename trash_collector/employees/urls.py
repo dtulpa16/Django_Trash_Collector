@@ -12,5 +12,5 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
     path('todays_pickups/', views.todays_pickups, name = 'todays_pickups'),
-    path('filter/<str:day>/', views.filter, name = 'filter'),
+    path('filter/<str:day_of_week>/', views.filter, name = 'filter'),
 ]
