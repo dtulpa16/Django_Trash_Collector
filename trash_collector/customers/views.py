@@ -1,4 +1,6 @@
 
+from django.db.models.fields import NullBooleanField
+from django.db.models.query import EmptyQuerySet
 from django.shortcuts import render
 from .models import Customer
 from django.contrib.auth.models import Group, User
@@ -17,7 +19,6 @@ def index(request):
         # This line inside the 'try' will return the customer record of the logged-in user if one exists
         logged_in_customer = Customer.objects.get(user=user)
     except:
-        # TODO: Redirect the user to a 'create' function to finish the registration process if no customer record found
         return HttpResponseRedirect(reverse('customers:create'))
         
 
@@ -32,7 +33,12 @@ def create(request):
             address = request.POST.get('address')
             zip_code = request.POST.get('zip_code')
             weekly_pickup = request.POST.get('weekly_pickup')
+<<<<<<< HEAD
             new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup, user = request.user, suspend_start = '2000-01-01', suspend_end = '2000-01-02')
+=======
+            balance = request.POST.get('balance')
+            new_user = Customer(name= name, zip_code = zip_code, address = address, weekly_pickup = weekly_pickup, balance=0, user = request.user)
+>>>>>>> 31a3eb2edacc93cebab30f088ee56180c6663035
             new_user.save()
             return render(request, 'customers/index.html')
         else:
@@ -69,7 +75,7 @@ def one_time_pickup(request):
 
 def suspend_pickup (request):
         user = request.user
-        logged_in_customer = Customer.objects.get (user=user)
+        logged_in_customer = Customer.objects.get(user=user)
         if request.method =='POST':
             logged_in_customer.suspend_start = request.POST.get('suspend_start')
             logged_in_customer.suspend_end = request.POST.get('suspend_end')
@@ -81,15 +87,21 @@ def suspend_pickup (request):
             }
 
             return render (request, 'customers/suspend_pickup.html', context)
-
-
+            
 
 def account_balance (request):
     user = request.user
-    logged_in_customer = Customer.objects.get (user=user)
-    acc_balance = logged_in_customer.balance 
+    logged_in_customer = Customer.objects.get(user=user)
     context = {
-        'acc_balance' : acc_balance
+        'logged_in_customer' : logged_in_customer
     }
-    return render (request, 'customer/account_balance.html', context)
+
+    return render (request, 'customers/account_balance.html', context)
+
+
+
+   
+    
+   
+ 
 

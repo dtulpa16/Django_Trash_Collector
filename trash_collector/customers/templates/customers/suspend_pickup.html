@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31a3eb2edacc93cebab30f088ee56180c6663035
 {% extends 'base.html' %}
 
 {% block title %} Suspend Pickup {% endblock %}
@@ -6,11 +9,19 @@
 {% block header %} Suspend Pickup Services {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
     <form action="{% url 'customers:suspend_pickup'%}" method="POST">
+=======
+    <form action="{% url 'customers:update_pickup'%}" method="POST">
+>>>>>>> 31a3eb2edacc93cebab30f088ee56180c6663035
         {% csrf_token %}
           <label for="suspend_pickup">Choose Suspension Start Date:</label>
           <input type= "date" id= 'suspend_start' name= 'suspend_start'>
           <input type= 'date' id= 'suspend_end' name= 'suspend_end'>
           <input type="submit" value="Update">
         </form>    
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock content %}
+>>>>>>> 31a3eb2edacc93cebab30f088ee56180c6663035

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Balance {%endblock%} 
+
+{% block header %} Account Balance {% endblock %} 
+
+{% block content %}
+    <form action="{% url 'customers:account_balance' %}">
+      <h4> Account Balance:</h4>
+        <h3>${{logged_in_customer.balance}}</h3>
+          <!-- <a id='pay' href="" target="_blank">Click Here To Pay</a>  -->
+    </form>    
+{% endblock %}
+
+
