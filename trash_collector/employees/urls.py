@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
     path('todays_pickups/', views.todays_pickups, name = 'todays_pickups'),
-    path('filter/<str:day>/', views.filter, name = 'filter'),
-    path('', views.charge_customer, name= 'charge_customer')
+    path('', views.charge_customer, name= 'charge_customer'),
+    path('filter/<str:day_of_week>/', views.filter, name = 'filter'),
+    path('search_by_day/', views.search_by_day, name = 'search_by_day')
 ]

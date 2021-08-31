@@ -55,19 +55,18 @@ def create(request):
         else:
             return render(request, 'employees/create.html')
 
-   
-def filter(request, day):
+def filter(request, day_of_week):
     user = request.user
     logged_in_employee = Employee.objects.get(user=user)
     Customer = apps.get_model('customers.Customer')
-    customers = Customer.objects.filter(weekly_pickup = day)
+    customers = Customer.objects.filter(weekly_pickup = day_of_week)
     customer = []
     for filter_day in customers:
         customer.append(filter_day)
     context = {
         'customer' : customer
     }
-    return render(request, 'employees/filter/day.html', context)
+    return render(request, 'employees/filter.html', context)
 
 def charge_customer (request):
     Customer = apps.get_model('customers.Customer')
@@ -76,6 +75,9 @@ def charge_customer (request):
     balance= customers + 5
     balance.save()
     return render(request, "employees/todays_pickups.html")
+
+def search_by_day(request):
+    return render(request, "employees/search_by_day.html")
 
 
 
