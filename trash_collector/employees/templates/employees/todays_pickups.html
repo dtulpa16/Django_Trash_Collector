@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
+{% block title %}{% block header %} Todays Pickups {% endblock %}{% endblock %}
 
 {% block content %}
 <form action = "{% url 'employees:todays_pickups'%}">
 {% for customer in customer %}
-        <li><h2>{{customer.name}} - {{customer.address}}</li></h2>
+        <li><h2>Name: {{customer.name}}<br> Address: {{customer.address}}</li></h2>
 {% endfor %}
 </form>
 {% endblock %}
