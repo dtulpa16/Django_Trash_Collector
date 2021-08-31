@@ -38,7 +38,7 @@ def todays_pickups(request):
     customers = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
     customer = []
     for pick_ups in customers:
-        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code and pick_ups.suspend_start > today and  today >= pick_ups.suspend_end :
+        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code and pick_ups.suspend_start > today and  today >= pick_ups.suspend_end and today != '2000-01-02' :
             customer.append(pick_ups)
     context = {
         'customer' : customer
@@ -56,3 +56,24 @@ def create(request):
             return render(request, 'employees/create.html')
 
 
+# def confirm_pickup (request):
+#     pass
+#     charged = False
+#     if charged == True:
+#         charge_customer(request)
+#     else charged == False
+
+   
+
+
+def charge_customer (request):
+    Customer = apps.get_model('customers.Customer')
+    if request.method == 'POST':
+        
+        customers = Customer.POST.get('balance')
+        customers += 5
+    
+    context = {
+        'customers' : customers
+    }
+    return render(request, "employees/todays_pickups.html", context)
