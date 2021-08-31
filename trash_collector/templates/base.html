@@ -18,9 +18,9 @@
       <nav>
         <a href="">Home</a>
         <a href="customers/account_balance/">Account Balance</a>
-        <a href="customers/update_pickup/"> Update Pickup </a>
-        <a href="customers/one_time_pickup/"> Schedule One Time Pickup</a>
-        <a href="customers/suspend_pickup/"> Suspend Services</a> 
+        <a href="{% url 'customers:update_pickup'%}"> Update Pickup </a>
+        <a href="{% url 'customers:one_time_pickup'%}"> Schedule One Time Pickup</a>
+        <a href="{% url 'customers:suspend_pickup'%}"> Suspend Services</a> 
       </nav> 
     </div>   
     
@@ -28,7 +28,7 @@
     <div id="navbar">
       <nav>
         <a href="">Home</a>
-        <a href="todays_pickups/"> Todays Pickups </a>
+        <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
         <a href=""> Weekly Pickup Information</a>
         <a href=""> Suspend Services</a> 
       </nav> 
