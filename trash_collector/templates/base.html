@@ -43,12 +43,9 @@
     
     
     {% elif group.name == "Employees" %}
+
     <div class="navbar">
      <nav class='navigation'>
-       
-      
-
-
 
         <a href="">Home</a>
         <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
@@ -56,6 +53,13 @@
         <p><a href="{% url 'logout' %}">Log Out</a></p>
        
       </nav>
+
+      <nav>
+        <a href="">Home</a>
+        <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
+        <a href="employees/search_by_day/"> Weekly Pickup Information</a>
+      </nav> 
+
     </div> 
     {% endif %}
 

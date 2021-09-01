@@ -4,14 +4,15 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    Hello Employee {{ user.username }}!
-    <h2><a href= "{% url 'employees:todays_pickups' %}">Todays pickups</a></h2>
-    <h2><a href= "{% url 'employees:search_by_day' %}">Search pickups by specific day</a></h2>
-    <!-- <h4><a href= "{% url 'employees:filter' 'Monday' %}">Monday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Tuesday' %}">Tuesday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Wednesday' %}">Wednesday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Thursday' %}">Thursday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Friday' %}">Friday pickups</a></h4> -->
+    <h1>Hello Employee: {{ user.username }}!</h1>
+    <br>
+    <h2>Todays Pickups</h2>
+    <form action = "{% url 'employees:index'%}">
+      {% for customer in customer %}
+              <h4><li>Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</li></h4>
+              <a href = "{% url 'employees:charge_customer' 20 customer.id %}">Confirm pickup and charge customer</a>
+      {% endfor %}
+      </form>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
