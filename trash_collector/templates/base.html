@@ -10,40 +10,68 @@
   crossorigin="anonymous">
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styleSheet.css' %}">
- 
+  <base href= "http://127.0.0.1:8000/" target="_self">
   
 
 
 </head>
 <body>
-<base href= "http://127.0.0.1:8000/" target="_self">
+
 {% if user.is_authenticated %}
   
 {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
-    <div class="navbar">
-      <nav>
-        <a href="">Home</a>
-        <a href="customers/payment/">Account Balance</a>
-        <a href="customers/update_pickup"> Update Pickup </a>
-        <a href="customers/one_time_pickup"> Schedule One Time Pickup</a>
-        <a href="customers/suspend_pickup"> Suspend Services</a> 
-        <a href="customers/details"> Account Details</a> 
+   
+      <nav class="navbar">
+        <!-- <div class="container-fluid"> 
+          <div class="nav-header">
+          <a href="customers/">Replace with picture</a>
+          </div>
+        </div> -->
+        <ul class="nav nav-tabs">
+        <li><a href="customers/">Home</a></li>
+        <li><a href="customers/account_balance/">Account Balance</a></li>
+        <li><a href="customers/update_pickup"> Update Pickup </a></li>
+        <li><a href="customers/one_time_pickup"> Schedule One Time Pickup</a></li>
+        <li><a href="customers/suspend_pickup"> Suspend Services</a> </li>
+        <li<a href="customers/details"> Account Details</a> ></li>
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+      </ul>
+       </div> 
       </nav> 
-    </div>  
+      
+
+    
     
     {% elif group.name == "Employees" %}
+
     <div class="navbar">
+     <nav class='navigation'>
+
+        <a href="">Home</a>
+        <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
+        <a href="employees/search_by_day/"> Weekly Pickup Information</a>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+       
+      </nav>
+
       <nav>
+<<<<<<< HEAD
         <a href="{% url 'employees:todays_pickups' %}">Home</a>
         <!-- <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a> -->
         <a href="{% url 'employees:search_by_day' %}"> Pickups by weekday</a>
+=======
+        <a href="">Home</a>
+        <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
+        <a href="employees/search_by_day/"> Weekly Pickup Information</a>
+>>>>>>> 4c8b4158a9ad1170324a4fd6efbf8fccda324645
       </nav> 
+
     </div> 
     {% endif %}
 
   {% endfor %}
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  
 {% endif %}
   <main>
     <h1>{% block header %} {% endblock %}</h1>
@@ -52,12 +80,14 @@
     
     {% endblock %}
   </main>
+
+  
+</body>
+{% block scripts %}
   <script src="path/to/jquery.js"></script>
   <script src="path/to/popper.js"></script>
   <script src="path/to/bootstrap.js"></script>
   <script src="path/to/bootstrap-confirmation.js"></script>
-</body>
-
+  {% endblock %}
 </html>
 {# This is the parent template that should be extended by any other view you create #}
-{# Todo: Add navbar links, link to stylesheets, style layout #}
