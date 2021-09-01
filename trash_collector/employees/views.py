@@ -58,6 +58,7 @@ def create(request):
 def filter(request, day_of_week):
     user = request.user
     logged_in_employee = Employee.objects.get(user=user)
+    # is the above necessary? 
     Customer = apps.get_model('customers.Customer')
     customers = Customer.objects.filter(weekly_pickup = day_of_week)
     customer = []
@@ -68,13 +69,18 @@ def filter(request, day_of_week):
     }
     return render(request, 'employees/filter.html', context)
 
-def charge_customer (request):
+
+def charge_customer (request, charge):
     Customer = apps.get_model('customers.Customer')
-    # if request.method == 'POST':
-    customers = Customer.POST.get('balance')
-    balance= customers + 5
-    balance.save()
+    balance= Customer.balance
+    new_balance= balance + charge
+    # if customer_id == Customer.id:
+    # Customer.balance += 5
+    Customer.save()
     return render(request, "employees/todays_pickups.html")
+
+
+
 
 def search_by_day(request):
     return render(request, "employees/search_by_day.html")

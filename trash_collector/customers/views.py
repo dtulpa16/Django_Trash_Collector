@@ -93,7 +93,13 @@ def account_balance (request):
 
     return render (request, 'customers/account_balance.html', context)
 
-
+def charge_customer (request):
+    user=request.user
+    confirm_customer = Customer.objects.get (user = user)
+    if request.method == "POST":
+        new_balance = confirm_customer.balance + 5
+        confirm_customer.save (balance=new_balance)
+        
 
    
     

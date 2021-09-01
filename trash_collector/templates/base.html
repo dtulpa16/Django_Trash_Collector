@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>{% block title %}Trash Collection Company{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Trash Collection Company{% endblock %}</title>
-  <base href= "http://127.0.0.1:8000/" target="_self">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <link rel="styleSheet" href="styleSheet.css"> 
+  <link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+  crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styleSheet.css' %}">
+ 
+  
+
 
 </head>
 <body>
+<base href= "http://127.0.0.1:8000/" target="_self">
 {% if user.is_authenticated %}
   
 {% for group in user.groups.all%}
@@ -18,19 +25,18 @@
       <nav>
         <a href="">Home</a>
         <a href="customers/account_balance/">Account Balance</a>
-        <a href="{% url 'customers:update_pickup'%}"> Update Pickup </a>
-        <a href="{% url 'customers:one_time_pickup'%}"> Schedule One Time Pickup</a>
-        <a href="{% url 'customers:suspend_pickup'%}"> Suspend Services</a> 
+        <a href="customers/update_pickup"> Update Pickup </a>
+        <a href="customers/one_time_pickup"> Schedule One Time Pickup</a>
+        <a href="customers/suspend_pickup"> Suspend Services</a> 
       </nav> 
-    </div>   
+    </div>   u
     
     {% elif group.name == "Employees" %}
-    <div id="navbar">
+    <div class="navbar">
       <nav>
         <a href="">Home</a>
         <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
-        <a href=""> Weekly Pickup Information</a>
-        <a href=""> Suspend Services</a> 
+        <a href="employees/search_by_day/"> Weekly Pickup Information</a>
       </nav> 
     </div> 
     {% endif %}
@@ -45,11 +51,12 @@
     
     {% endblock %}
   </main>
+  <script src="path/to/jquery.js"></script>
+  <script src="path/to/popper.js"></script>
+  <script src="path/to/bootstrap.js"></script>
+  <script src="path/to/bootstrap-confirmation.js"></script>
 </body>
-<script src="path/to/jquery.js"></script>
-<script src="path/to/popper.js"></script>
-<script src="path/to/bootstrap.js"></script>
-<script src="path/to/bootstrap-confirmation.js"></script>
+
 </html>
 {# This is the parent template that should be extended by any other view you create #}
 {# Todo: Add navbar links, link to stylesheets, style layout #}

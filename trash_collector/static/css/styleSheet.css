@@ -2,12 +2,12 @@ body{
     background-color: rgba(90, 90, 90, 0.952);
 }
 
-#navbar a{
+.navbar a{
     padding: 4%;
 }
 
 
-#navbar {
+.navbar {
     position: sticky;
     font-size: larger;
     font-weight: bolder;
@@ -29,7 +29,7 @@ content {
     color: beige;
 }
 
-#navbar a:active{
+.navbar a:active{
     color:rgb(5, 5, 5);
 }
 
