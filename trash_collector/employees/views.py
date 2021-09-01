@@ -64,7 +64,7 @@ def create(request):
             zip_code = request.POST.get('zip_code')
             new_user = Employee(zip_code = zip_code, name = name, user = request.user)
             new_user.save()
-            return render(request, 'employees/index.html')
+            return HttpResponseRedirect(reverse('employees:index'))
         else:
             return render(request, 'employees/create.html')
 
@@ -82,15 +82,19 @@ def filter(request, day_of_week):
     }
     return render(request, 'employees/filter.html', context)
 
-
-def charge_customer (request, charge):
+def charge_customer (request, charge, cust_id):
     Customer = apps.get_model('customers.Customer')
-    balance= Customer.balance
-    new_balance= balance + charge
-    # if customer_id == Customer.id:
-    # Customer.balance += 5
-    Customer.save()
-    return render(request, "employees/todays_pickups.html")
+    charged_customer = Customer.objects.get(pk = cust_id)
+    if request.method == 'POST':
+        charged_customer.balance += charge
+        charged_customer.save()
+        return HttpResponseRedirect(reverse('employees:todays_pickups'))
+    else:
+        context = {
+            'charged_customer' : charged_customer
+        }
+        return render(request, 'employees/charge_customer.html', context)
+
 
 
 

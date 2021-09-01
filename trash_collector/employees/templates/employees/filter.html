@@ -10,7 +10,7 @@
 {% endfor %}
 <form action="{% url 'employees:search_by_day'%}">
     {% csrf_token %}
-    <input type="submit" value="Return to filtered search home page" />
+    <input type="submit" value="Return to filtered search home page" >
 </form>
 
 {% endblock %}

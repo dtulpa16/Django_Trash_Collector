@@ -13,4 +13,8 @@
         <input type="date" id="one_time_pickup" name="one_time_pickup">
         <input type="submit" value="Set up one time pickup">
     </form>
+    <form action="{% url 'customers:index'%}">
+      {% csrf_token %}
+      <input type="submit" value="Return to Home" />
+  </form>
   {% endblock %}

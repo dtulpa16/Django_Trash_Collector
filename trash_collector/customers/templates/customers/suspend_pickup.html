@@ -7,9 +7,13 @@
 {% block content %}
     <form action="{% url 'customers:suspend_pickup'%}" method="POST">
         {% csrf_token %}
-          <label for="suspend_pickup">Choose Suspension Start Date:</label>
+          <label for="suspend_pickup">Choose Suspension Start And End Date:</label>
           <input type= "date" id= 'suspend_start' name= 'suspend_start'>
           <input type= 'date' id= 'suspend_end' name= 'suspend_end'>
           <input type="submit" value="Update">
         </form>    
+        <form action="{% url 'customers:index'%}">
+          {% csrf_token %}
+          <input type="submit" value="Return to Home" />
+      </form>
 {% endblock %}
