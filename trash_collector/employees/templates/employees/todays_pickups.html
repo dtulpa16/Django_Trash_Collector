@@ -6,8 +6,7 @@
 <form action = "{% url 'employees:todays_pickups'%}">
 {% for customer in customer %}
         <h2><li>Name: {{customer.name}}<br> Address: {{customer.address}}</li></h2>
-        <a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
-         action="{% 'employees:charge_customer' %}">Confirmation</a>
+        <a href = "{% url 'employees:charge_customer' 20 customer.id %}">Confirm pickup and charge customer</a>
 {% endfor %}
 </form>
 {% endblock %}

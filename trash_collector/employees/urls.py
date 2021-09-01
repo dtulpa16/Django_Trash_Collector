@@ -11,8 +11,8 @@ app_name = "employees"
 urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name = 'create'),
-    path('todays_pickups/', views.todays_pickups, name = 'todays_pickups'),
-    path('', views.charge_customer, name= 'charge_customer'),
+    path('index/', views.todays_pickups, name = 'todays_pickups'),
+    path('charge_customer/<int:charge>/<int:cust_id>/', views.charge_customer, name= 'charge_customer'),
     path('filter/<str:day_of_week>/', views.filter, name = 'filter'),
     path('search_by_day/', views.search_by_day, name = 'search_by_day')
 ]

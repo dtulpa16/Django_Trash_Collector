@@ -8,5 +8,9 @@
 {% for customer in customer %}
         <li><h2>Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</li></h2>
 {% endfor %}
+<form action="{% url 'employees:search_by_day'%}">
+    {% csrf_token %}
+    <input type="submit" value="Return to filtered search home page" />
+</form>
 
 {% endblock %}

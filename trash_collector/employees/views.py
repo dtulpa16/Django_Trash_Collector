@@ -8,6 +8,7 @@ from datetime import datetime
 from datetime import date
 from .models import Employee
 import calendar
+import smtplib
 
 
 # Create your views here.
@@ -23,11 +24,23 @@ def index(request):
         logged_in_employee = Employee.objects.get(user=user)
     except:
         return HttpResponseRedirect(reverse('employees:create'))
-    # return render(request, 'employees/index.html')
     print(user)
-    return render(request, 'employees/index.html')
-
-    #TODO finish todays pickup and find out why is redirecting to empty employee home page. also, figure out why emplyees are being directed to the customer page
+    
+    #TODO: moved the "todays pickup" to the index render so the pickups render right away in the index page
+    user = request.user
+    logged_in_employee = Employee.objects.get(user=user)
+    Customer = apps.get_model('customers.Customer')
+    today = date.today()
+    string_weekday = calendar.day_name[today.weekday()]
+    customers = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
+    customer = []
+    for pick_ups in customers:
+        if (pick_ups.one_time_pickup == today or pick_ups.weekly_pickup == string_weekday) and logged_in_employee.zip_code == pick_ups.zip_code and (pick_ups.suspend_start < today and  today >= pick_ups.suspend_end or pick_ups.suspend_start > today and  today <= pick_ups.suspend_end) and pick_ups.suspend_start != '2000-01-01':
+            customer.append(pick_ups)
+    context = {
+        'customer' : customer
+        }
+    return render(request, 'employees/index.html', context)
 
 def todays_pickups(request):
     user = request.user
@@ -43,7 +56,7 @@ def todays_pickups(request):
     context = {
         'customer' : customer
         }
-    return render(request, 'employees/todays_pickups.html', context)
+    return render(request, 'employees/index.html', context)
 
 def create(request):
         if request.method == 'POST':
@@ -68,13 +81,19 @@ def filter(request, day_of_week):
     }
     return render(request, 'employees/filter.html', context)
 
-def charge_customer (request):
+def charge_customer (request, charge, cust_id):
     Customer = apps.get_model('customers.Customer')
-    # if request.method == 'POST':
-    customers = Customer.POST.get('balance')
-    balance= customers + 5
-    balance.save()
-    return render(request, "employees/todays_pickups.html")
+    charged_customer = Customer.objects.get(pk = cust_id)
+    if request.method == 'POST':
+        charged_customer.balance += charge
+        charged_customer.save()
+        return HttpResponseRedirect(reverse('employees:todays_pickups'))
+    else:
+        context = {
+            'charged_customer' : charged_customer
+        }
+        return render(request, 'employees/charge_customer.html', context)
+
 
 def search_by_day(request):
     return render(request, "employees/search_by_day.html")

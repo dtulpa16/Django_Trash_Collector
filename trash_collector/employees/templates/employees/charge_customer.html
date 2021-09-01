@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block header %} Confirm charge {% endblock %}{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" name="balance" value="Confirm Charge" />
+    </form>
+{% endblock %}

@@ -27,10 +27,9 @@
     {% elif group.name == "Employees" %}
     <div id="navbar">
       <nav>
-        <a href="">Home</a>
-        <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a>
-        <a href=""> Weekly Pickup Information</a>
-        <a href=""> Suspend Services</a> 
+        <a href="{% url 'employees:todays_pickups' %}">Home</a>
+        <!-- <a href="{% url 'employees:todays_pickups' %}"> Todays Pickups </a> -->
+        <a href="{% url 'employees:search_by_day' %}"> Pickups by weekday</a>
       </nav> 
     </div> 
     {% endif %}
