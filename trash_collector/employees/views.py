@@ -82,21 +82,6 @@ def filter(request, day_of_week):
     }
     return render(request, 'employees/filter.html', context)
 
-<<<<<<< HEAD
-def charge_customer (request, charge, cust_id):
-    Customer = apps.get_model('customers.Customer')
-    charged_customer = Customer.objects.get(pk = cust_id)
-    if request.method == 'POST':
-        charged_customer.balance += charge
-        charged_customer.save()
-        return HttpResponseRedirect(reverse('employees:todays_pickups'))
-    else:
-        context = {
-            'charged_customer' : charged_customer
-        }
-        return render(request, 'employees/charge_customer.html', context)
-
-=======
 
 def charge_customer (request, charge):
     Customer = apps.get_model('customers.Customer')
@@ -106,7 +91,6 @@ def charge_customer (request, charge):
     # Customer.balance += 5
     Customer.save()
     return render(request, "employees/todays_pickups.html")
->>>>>>> 234ff3c9e79bc363627c18bb4185e7cee4ae3d86
 
 
 
