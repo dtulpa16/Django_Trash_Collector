@@ -5,8 +5,15 @@
 {% block content %}
 <form action = "{% url 'employees:todays_pickups'%}">
 {% for customer in customer %}
+<<<<<<< HEAD
         <h2><li>Name: {{customer.name}}<br> Address: {{customer.address}}</li></h2>
         <a href = "{% url 'employees:charge_customer' 20 customer.id %}">Confirm pickup and charge customer</a>
+=======
+        <li><h2>Name: {{customer.name}}<br> Address: {{customer.address}}</li></h2>
+        <a href= "{% url 'employees:charge_customer' 20 %}">Confirm Pick-up</a>
+        
+>>>>>>> 234ff3c9e79bc363627c18bb4185e7cee4ae3d86
 {% endfor %}
 </form>
+
 {% endblock %}
