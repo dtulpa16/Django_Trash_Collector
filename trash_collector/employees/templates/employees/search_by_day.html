@@ -3,9 +3,11 @@
 {% block title %}{% block header %} Search by day {% endblock %}{% endblock %}
 
 {% block content %}
-    <h4><a href= "{% url 'employees:filter' 'Monday' %}">Monday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Tuesday' %}">Tuesday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Wednesday' %}">Wednesday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Thursday' %}">Thursday pickups</a></h4>
-    <h4><a href= "{% url 'employees:filter' 'Friday' %}">Friday pickups</a></h4>
+
+  <p><a href= "{% url 'employees:filter' 'Monday' %}">Monday pickups</a><br><br>
+    <a href= "{% url 'employees:filter' 'Tuesday' %}">Tuesday pickups</a><br><br>
+    <a href= "{% url 'employees:filter' 'Wednesday' %}">Wednesday pickups</a><br><br>
+    <a href= "{% url 'employees:filter' 'Thursday' %}">Thursday pickups</a><br><br>
+    <a href= "{% url 'employees:filter' 'Friday' %}">Friday pickups</a><br><br>
+</p>
   {% endblock %}
