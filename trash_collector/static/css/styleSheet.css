@@ -1,35 +1,73 @@
 body{
-    background-color: rgba(90, 90, 90, 0.952);
+    background-color: rgba(244, 240, 240, 0.315);
+    background-image: url(templates/pictures/bins.jpeg);
+    color:rgb(5, 5, 5);
+    text-align: center;
 }
 
-.navbar a{
+a{
+    padding: 10%;
+}
+
+header {
+    padding: 6%;
+    background-image: url(templates/pictures/bins.jpeg);
+    
+}
+
+.col {
+    margin: 2%;
+    border:slategray;
+    border-width: 1%;
+    border-style: solid;
+    background-color:rgba(61, 114, 79, 0.331);
+}
+
+.col a:any-link{
+    color: rgb(8, 8, 8);
+}
+
+nav a:any-link{
+    padding: 4%;
+    color: teal;
+
+} 
+
+#navigation a{
     padding: 4%;
 }
 
+#navigation a:link {
+    color: rgb(250, 243, 243);
+  }
 
-.navbar {
-    position: sticky;
-    font-size: larger;
-    font-weight: bolder;
-    font-optical-sizing: 100;
-    height: 50%;
-    background-color:rgba(47, 112, 82, 0.507);
+#navigation a:visited {
+    color: rgb(232, 233, 229);
+  }
+  
+  #navigation a:hover {
+    color: rgb(241, 248, 240);
+  }
+  
+#navigation a:active {
+    color: rgb(231, 231, 241);
+  }
+
+
+nav {
+    width:max-content;
+    background-color:rgba(250, 250, 250, 0.769);
     color: rgb(5, 5, 5);
-    text-align: center
+    text-align: center;
+    padding: 4%;    
+    border-bottom: rgb(78, 78, 78);
+    border-top: rgb(78, 78, 78);
+    animation: ease;
 }
 
-content {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgb(37, 37, 36);
-    border-style: hidden;
-    background-clip: padding-box;
-    margin: 20px;
-    padding: 20px;
-    align-content: center;
-    color: beige;
-}
 
-.navbar a:active{
-    color:rgb(5, 5, 5);
-}
+
+
+
+
 
