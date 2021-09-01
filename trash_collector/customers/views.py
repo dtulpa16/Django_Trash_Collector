@@ -91,7 +91,7 @@ def account_balance (request):
         'logged_in_customer' : logged_in_customer
     }
 
-    return render (request, 'customers/account_balance.html', context)
+    return render (request, 'customers/payment.html', context)
 
 def charge_customer (request):
     user=request.user
@@ -99,6 +99,14 @@ def charge_customer (request):
     if request.method == "POST":
         new_balance = confirm_customer.balance + 5
         confirm_customer.save (balance=new_balance)
+
+def detail(request):
+    user=request.user
+    single_customer = Customer.objects.get (user = user)
+    context = {
+        'single_customer': single_customer
+    }
+    return render(request, 'customers/details.html', context)
         
 
    

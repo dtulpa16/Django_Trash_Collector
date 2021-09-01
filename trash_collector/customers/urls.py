@@ -12,5 +12,7 @@ urlpatterns = [
     path('update_pickup/', views.update_pickup, name = 'update_pickup'),
     path('one_time_pickup/', views.one_time_pickup, name = 'one_time_pickup'),
     path('suspend_pickup/', views.suspend_pickup, name = 'suspend_pickup'),
-    path('account_balance/', views.account_balance, name= 'account_balance')
+    # path('account_balance/', views.account_balance, name= 'account_balance'),
+    path('payment/',views.account_balance, name = 'payment'),
+    path('details/',views.detail, name = 'details')
 ]
