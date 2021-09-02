@@ -1,22 +1,35 @@
 body{
+    margin-top: 1%;
     background-color: rgba(244, 240, 240, 0.315);
     background-image: url(templates/pictures/bins.jpeg);
     color:rgb(5, 5, 5);
     text-align: center;
 }
 
-a{
-    padding: 1%;
-}
 
-header {
-    padding: 6%;
-    background-image: url(templates/pictures/bins.jpeg);
+#nav_c{
+    position:static;
+    text-align: justify;
+    /* background-color: rgba(45, 137, 165, 0.365); */
+    border-radius: 10%;
+    border-color: black;
     
 }
 
+header {
+    padding: 10%;
+    text-align: center;
+    /* background-image: url(templates/pictures/bins.jpeg); */
+    
+}
+
+
+/* customer index specific */
 .col {
     margin: 2%;
+    margin-top: 10%;
+    padding-bottom: 40%;
+    padding-top: 10%;
     border:slategray;
     border-width: 1%;
     border-style: solid;
@@ -25,9 +38,16 @@ header {
 
 .col a:any-link{
     color: rgb(8, 8, 8);
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+    
 }
 
-nav a:any-link{
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+/* nav a:any-link{
     padding: 4%;
     color: teal;
 
@@ -54,28 +74,52 @@ nav a:any-link{
   }
 
 
-nav {
-    width:max-content;
-    background-color:rgba(250, 250, 250, 0.769);
-    color: rgb(5, 5, 5);
-    text-align: center;
-    padding: 4%;    
-    border-bottom: rgb(78, 78, 78);
-    border-top: rgb(78, 78, 78);
+.nav-item dropdown {
+    position:sticky;
+    align-content: flex-start;
+} */
+
+
+#update_pickup{
+    padding-top: 10%;
+    margin-top: 10%;
+}
+
+#one_time{
+    padding-top: 10%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#details{
+    text-align: justify;
+    margin: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    
+    /* box-sizing:border-box; */
+    background-color: rgba(167, 167, 167, 0.144);
+    border-style:double;
+    border-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%;
+}
+
+#bins {
+    background-color:rgba(45, 137, 165, 0.523);
+    text-emphasis: Bolder;
+    text-size-adjust: 60%;
+    padding-top: 7%;
+}
+
+#header_text{
+    padding:1%
     
 }
 
-
-footer {
-    position:static;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color:rgba(13, 2, 49, 0.527);
-    color: whitesmoke;
-    text-align: center;
-  }
-
-
-
+main {
+    margin-top: 15%;
+}
 
