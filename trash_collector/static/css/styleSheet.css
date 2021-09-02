@@ -19,8 +19,6 @@ body{
 header {
     padding: 10%;
     text-align: center;
-    /* background-image: url(templates/pictures/bins.jpeg); */
-    
 }
 
 
@@ -34,6 +32,7 @@ header {
     border-width: 1%;
     border-style: solid;
     background-color:rgba(61, 114, 79, 0.331);
+    
 }
 
 .col a:any-link{
@@ -46,39 +45,6 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
-
-/* nav a:any-link{
-    padding: 4%;
-    color: teal;
-
-} 
-
-#navigation a{
-    padding: 4%;
-}
-
-#navigation a:link {
-    color: rgb(250, 243, 243);
-  }
-
-#navigation a:visited {
-    color: rgb(232, 233, 229);
-  }
-  
-  #navigation a:hover {
-    color: rgb(241, 248, 240);
-  }
-  
-#navigation a:active {
-    color: rgb(231, 231, 241);
-  }
-
-
-.nav-item dropdown {
-    position:sticky;
-    align-content: flex-start;
-} */
-
 
 #update_pickup{
     padding-top: 10%;
@@ -98,8 +64,6 @@ a:active { text-decoration: none; }
     padding-right: 10%;
     padding-top: 5%;
     padding-bottom: 5%;
-    
-    /* box-sizing:border-box; */
     background-color: rgba(167, 167, 167, 0.144);
     border-style:double;
     border-color: black;
@@ -123,3 +87,43 @@ main {
     margin-top: 15%;
 }
 
+/* employees */
+
+.navbar a{
+     margin-right: 10%; 
+}
+
+#sign_up{
+    margin-top: 10%;
+    margin-left: 15%;
+    text-align: justify;
+}
+
+#today_pickup{
+    text-align: justify;
+    margin: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgba(167, 167, 167, 0.144);
+    border-style:double;
+    border-color: rgb(53, 53, 53);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%;
+}
+
+#pickup_list{
+    text-align: justify;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgba(167, 167, 167, 0.144);
+    border-style:double;
+    border-color: rgb(53, 53, 53);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%;
+}

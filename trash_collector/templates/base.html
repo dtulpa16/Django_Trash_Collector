@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Trash Collection Company{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+  crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styleSheet.css' %}">
+  <base href= "http://127.0.0.1:8000/" target="_self">
+  
+
+
+</head>
+<body>
+
+{% if user.is_authenticated %}
+  
+{% for group in user.groups.all%}
+    {% if group.name == "Customers" %}
+
+      <form class="nav-item dropdown" id=nav_c>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="customers/">Home</a>
+          <a class="dropdown-item" href="customers/payment/">Account Balance</a>
+          <a class="dropdown-item" href="customers/update_pickup">Update Pickup</a>
+          <a class="dropdown-item" href="customers/one_time_pickup">Schedule One Time Pickup</a>
+          <a class="dropdown-item" href="customers/suspend_pickup">Suspend Services</a>
+          <a class="dropdown-item" href="customers/details">Account Details</a>
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        </div>
+      </form>
+      
+    
+      <header id="bins"><h1>{% block header %} {% endblock %}</h1></header>
+   
+    
+
+    {% elif group.name == "Employees" %}
+    
+    <div class="navbar">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <a href="{% url 'employees:todays_pickups' %}">Home</a>
+      <a href="employees/search_by_day/"> Weekly Pickup Information</a>
+      <a href="{% url 'logout' %}">Log Out</a>
+      </nav>
+    </div> 
+    
+    
+    {% endif %}
+
+  {% endfor %}
+  
+{% endif %}
+  <main>
+   
+    
+    {% block content %}
+    
+    {% endblock %}
+  </main>
+
+  {% block scripts %}
+  <script src="path/to/jquery.js"></script>
+  <script href="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="path/to/bootstrap.js"></script>
+  <script src="path/to/bootstrap-confirmation.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  {% endblock %}  
+</body>
+
+</html>
+{# This is the parent template that should be extended by any other view you create #}

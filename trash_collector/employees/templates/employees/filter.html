@@ -6,7 +6,7 @@
 
     <h1>Pickups for selected day </h1>
 {% for customer in customer %}
-        <li><h2>Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</li></h2>
+        <p id="pickup_list">Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</p>
 {% endfor %}
 <form action="{% url 'employees:search_by_day'%}">
     {% csrf_token %}
