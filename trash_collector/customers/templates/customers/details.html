@@ -5,11 +5,16 @@
 {% block header %} Account Details {% endblock %}
 
 {% block content %}
-        <h2>Name: {{single_customer.name}}</h2>
-        <h2>Pick up day: {{single_customer.weekly_pickup}}</h2>
-        <h2>Address: {{single_customer.address}}</h2> 
-        <h2>Balance: ${{single_customer.balance}}</h2>
-        <form action="{% url 'customers:index'%}">
+        
+            <p id="details"><b>Name:</b> {{single_customer.name}}<br>
+            <b> Pick up day:</b> {{single_customer.weekly_pickup}}</br>
+            <b> Address: </b>{{single_customer.address}}</br> 
+            <b> Balance: </b>${{single_customer.balance}}<br>
+           
+            <form action="{% url 'customers:index'%}">
             <input type="submit" value="Return to Home">
-        </form>
+            </form>
+            </p>
+       
+        
 {% endblock %}

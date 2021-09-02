@@ -5,7 +5,7 @@
 {% block header %} Update Reoccuring Pickup Day {% endblock %}
 
 {% block content %}
-    <form action="{% url 'customers:update_pickup'%}" method="POST">
+    <form action="{% url 'customers:update_pickup'%}" method="POST" id="update_pickup">
       {% csrf_token %}
         <label for="weekly_pickup">Choose a day of week:</label>
         <select name="weekly_pickup" id="weekly_pickup">

@@ -7,11 +7,18 @@
     <h1>Hello Employee: {{ user.username }}!</h1>
     <br>
     <h2>Todays Pickups</h2>
-    <form action = "{% url 'employees:index'%}">
+    <form action = "{% url 'employees:index'%}" id="today_pickup">
       {% for customer in customer %}
-              <h4><li>Name: {{customer.name}}<br> Address: {{customer.address}} {{customer.zip_code}}</li></h4>
-              <a href = "{% url 'employees:charge_customer' 20 customer.id %}">Confirm pickup and charge customer</a>
-      {% endfor %}
+              <p id="address">Name: {{customer.name}}<br> Address: <b>{{customer.address}} {{customer.zip_code}}</b></p>
+              <a href = "{% url 'employees:charge_customer' 20 customer.id %}">Charge customer</a>
+              <br>
+              <br>
+
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault" id="confirm">
+                  <b>Confirm Pickup</b>
+                </label>
+              {% endfor %}
       </form>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>

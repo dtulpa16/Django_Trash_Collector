@@ -7,7 +7,7 @@
 
 
 {% block content %}
-<form action="{% url 'customers:one_time_pickup'%}" method="POST">
+<form action="{% url 'customers:one_time_pickup'%}" method="POST" id=one_time>
         {% csrf_token %}
         <label for="one_time_pickup">Select date for one time pickup:</label>
         <input type="date" id="one_time_pickup" name="one_time_pickup">
