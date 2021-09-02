@@ -6,10 +6,6 @@ body{
     text-align: center;
 }
 
-<<<<<<< HEAD
-a{
-    padding: 10%;
-=======
 
 #nav_c{
     position:static;
@@ -18,7 +14,6 @@ a{
     border-radius: 10%;
     border-color: black;
     
->>>>>>> 700659e5243e2159f4ceec951f0b88edd2a2a506
 }
 
 header {
